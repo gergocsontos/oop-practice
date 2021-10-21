@@ -1,4 +1,7 @@
-package com.codecool.ooppractice.gergocsontos.billiardsaloon;
+package com.codecool.ooppractice.gergocsontos.billiardsaloon.tables;
+
+import com.codecool.ooppractice.gergocsontos.billiardsaloon.Consumable;
+import com.codecool.ooppractice.gergocsontos.billiardsaloon.tables.TableType;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -10,9 +13,12 @@ public class Table {
     private final List<Consumable> consumables = new ArrayList<>();
     private final TableType type;
 
-    public Table(LocalTime reservationStart, TableType type) {
-        this.reservationStart = reservationStart;
-        this.type = type;
+    public Table(TableType type) {
+        if (! isValidTableType(type)) {
+            this.type = type;
+        } else {
+            throw new IllegalArgumentException("Inappropriate Table Type!");
+        }
     }
 
     public void buyConsumable(Consumable consumable) {
@@ -47,8 +53,16 @@ public class Table {
         return tablePriceCalculation() + getSumOfConsumables();
     }
 
+    protected boolean isValidTableType(TableType type) {
+        return type.isRestricted();
+    }
+
     public TableType getType() {
         return type;
+    }
+
+    public LocalTime getReservationStart() {
+        return reservationStart;
     }
 
     @Override

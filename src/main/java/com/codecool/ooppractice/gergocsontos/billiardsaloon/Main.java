@@ -1,5 +1,7 @@
 package com.codecool.ooppractice.gergocsontos.billiardsaloon;
 
+import com.codecool.ooppractice.gergocsontos.billiardsaloon.tables.*;
+
 import java.time.LocalTime;
 import java.util.Arrays;
 
@@ -8,15 +10,25 @@ public class Main {
         System.out.println("Welcome to my Billiard Salon!");
         BilliardSalon salon = new BilliardSalon();
         // filling the salon with all the tables, no reservations yet
-        Table rex = new RestrictedTable(null, TableType.REX);
-        Table pool = new Table(null, TableType.POOL);
-        Table snooker = new RestrictedTable(null, TableType.SNOOKER);
+
+        // Test code checking if we can make a Table with Restricted type:
+
+        //Table poolRex = new Table(TableType.REX);
+
+        // Test code checking if we can make a RestrictedTable with Non-Restricted type:
+
+        //Table rexPool = new RestrictedTable(TableType.POOL);
+
+        Table rex = new RestrictedTable(TableType.REX);
+        Table pool = new Table(TableType.POOL);
+        Table snooker = new RestrictedTable(TableType.SNOOKER);
         salon.addTable(pool);
         salon.addTable(rex);
         salon.addTable(snooker);
         // add new Rex Table for the final list
-        salon.addTable(new RestrictedTable(LocalTime.of(19, 30), TableType.REX));
+        salon.addTable(new RestrictedTable(TableType.REX));
         // adding reservations
+
         rex.setReservationStart(LocalTime.of(19, 0));
         pool.setReservationStart(LocalTime.of(6, 0));
         snooker.setReservationStart(LocalTime.now());
@@ -40,7 +52,7 @@ public class Main {
 
         rex.payConsumable(beverage2);
 
-        System.out.println("All Rex Tables: " + Arrays.toString(salon.getAllTablesByType(TableType.REX).toArray()));
+        System.out.println("All Available Rex Tables: " + Arrays.toString(salon.getAllTablesByType(TableType.REX).toArray()));
     }
 
 }
