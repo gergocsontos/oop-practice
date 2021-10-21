@@ -22,15 +22,15 @@ public class Main {
         snooker.setReservationStart(LocalTime.now());
 
         // adding different consumables
-        Consumable ropi1 = new Consumable(200, ConsumableType.FOOD, "Crackers");
-        // Consumable ropi2 = new Consumable(200, ConsumableType.FOOD, "Ropi");
-        Consumable vodka1 = new Consumable(1200, ConsumableType.BEVERAGE, "Pepsi");
-        Consumable vodka2 = new Consumable(1200, ConsumableType.BEVERAGE, "Pepsi");
+        Consumable crackers = new Consumable(200, ConsumableType.FOOD, "Crackers");
+        // Consumable crackers2 = new Consumable(200, ConsumableType.FOOD, "Crackers");
+        Consumable beverage1 = new Consumable(1200, ConsumableType.BEVERAGE, "Pepsi");
+        Consumable beverage2 = new Consumable(1200, ConsumableType.BEVERAGE, "Pepsi");
 
-        pool.buyConsumable(ropi1);
-        pool.buyConsumable(vodka1);
+        pool.buyConsumable(crackers);
+        pool.buyConsumable(beverage1);
 
-        rex.buyConsumable(vodka2);
+        rex.buyConsumable(beverage2);
 
         System.out.println("Sum of consumables at Pool Table: " + pool.getSumOfConsumables());
         System.out.println("Total price at Pool Table (from 6am): " + pool.totalPriceCalculation());
@@ -38,7 +38,7 @@ public class Main {
 
         System.out.println("Highest consumption: " + salon.getHighestConsumption());
 
-        rex.payConsumable(vodka2);
+        rex.payConsumable(beverage2);
 
         System.out.println("All Rex Tables: " + Arrays.toString(salon.getAllTablesByType(TableType.REX).toArray()));
     }
