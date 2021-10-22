@@ -6,10 +6,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Fleet {
-    private Set<SpaceCraft> ships = new HashSet<>();
+    private final Set<SpaceCraft> ships = new HashSet<>();
 
     public void addShip(SpaceCraft ship) {
         ships.add(ship);
     }
 
+    public Set<SpaceCraft> getShips() {
+        return ships;
+    }
 }

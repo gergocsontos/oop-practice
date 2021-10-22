@@ -1,13 +1,16 @@
 package com.codecool.ooppractice.gergocsontos.starfleet.spacecrafts;
 
+import com.codecool.ooppractice.gergocsontos.starfleet.Fleet;
+
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public abstract class MobileShip extends SpaceCraft {
-    private final int speed;
+    protected final int speed;
 
-    public MobileShip(UUID registrationCode, int year, String name, ShipType type) {
-        super(registrationCode, year, name, type);
+    public MobileShip(UUID registrationCode, int year, String name, ShipType type, Fleet fleet) {
+        super(registrationCode, year, name, type, fleet);
         speed = calculateSpeedFromYear(year, type);
 
     }
@@ -25,7 +28,17 @@ public abstract class MobileShip extends SpaceCraft {
     public abstract void dock(SpaceStation station);
 
     public Set<SpaceStation> getAllStationsWithFreeDock() {
-        //TODO: getAllStationsWithFreeDock()
-        return null;
+        return fleet.getShips().stream()
+                .filter(ship -> ship instanceof SpaceStation)
+                .map(ship -> (SpaceStation) ship)
+                .filter(SpaceStation::hasAvailableDock)
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    public abstract String toString();
+
+    public int getSpeed() {
+        return speed;
     }
 }
