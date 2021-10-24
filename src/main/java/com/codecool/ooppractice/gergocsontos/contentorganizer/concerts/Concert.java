@@ -1,7 +1,6 @@
 package com.codecool.ooppractice.gergocsontos.contentorganizer.concerts;
 
 import com.codecool.ooppractice.gergocsontos.contentorganizer.bands.Band;
-import com.codecool.ooppractice.gergocsontos.contentorganizer.bands.BandType;
 
 import java.util.Optional;
 
@@ -15,15 +14,14 @@ public abstract class Concert {
     protected int beerPrice;
     protected int beerCounter = 0;
 
-    public Concert(Band mainBand, int ticketPrice) {
+    public Concert(Band mainBand, int ticketPrice, int capacity, int duration, int beerPrice) {
         this.mainBand = mainBand;
-        mainBand.setType(BandType.MAIN);
         Optional<Band> warmupBand = mainBand.chooseWarmup();
         this.warmupBand = warmupBand.orElse(null);
-        if (warmupBand.isPresent()) {
-            this.warmupBand.setType(BandType.WARM_UP);
-        }
         this.ticketPrice = validateTicketPrice(ticketPrice);
+        this.capacity = capacity;
+        this.duration = duration;
+        this.beerPrice = beerPrice;
     }
 
     protected int validateTicketPrice(int price) {

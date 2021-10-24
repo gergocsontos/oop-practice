@@ -4,14 +4,11 @@ import com.codecool.ooppractice.gergocsontos.contentorganizer.bands.Band;
 
 public class Festival extends Concert {
 
-    static final int capacity = 8000;
-    static final int duration = 360;
-    static final int beerPrice = 1000;
+    static final int CAPACITY = 8000;
+    static final int DURATION = 360;
+    static final int BEER_PRICE = 1000;
 
     public Festival(Band mainBand, int ticketPrice) {
-        super(mainBand, ticketPrice);
-        super.capacity = capacity;
-        super.duration = duration;
-        super.beerPrice = beerPrice;
+        super(mainBand, ticketPrice, CAPACITY, DURATION, BEER_PRICE);
     }
 }

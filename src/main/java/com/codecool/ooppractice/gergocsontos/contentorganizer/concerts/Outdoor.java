@@ -4,17 +4,14 @@ import com.codecool.ooppractice.gergocsontos.contentorganizer.bands.Band;
 
 public class Outdoor extends Concert {
 
-    static final int capacity = 5000;
-    static final int duration = 120;
-    static final int beerPrice = 800;
+    static final int CAPACITY = 5000;
+    static final int DURATION = 120;
+    static final int BEER_PRICE = 800;
 
     private boolean isCancelled = false;
 
     public Outdoor(Band mainBand, int ticketPrice) {
-        super(mainBand, ticketPrice);
-        super.capacity = capacity;
-        super.duration = duration;
-        super.beerPrice = beerPrice;
+        super(mainBand, ticketPrice, CAPACITY, DURATION, BEER_PRICE);
     }
 
     public boolean isCancelled() {
