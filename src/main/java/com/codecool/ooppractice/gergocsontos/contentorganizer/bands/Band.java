@@ -5,7 +5,7 @@ import java.util.Optional;
 public class Band {
     private String name;
     private MusicStyle style;
-    private BandCollection bandCollection;
+    private final BandCollection bandCollection;
 
     public Band(String name, MusicStyle style, BandCollection bandCollection) {
         this.name = name;
